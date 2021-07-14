@@ -1,5 +1,7 @@
 <?php
-
+if (!php_sapi_name() == "cli") {
+    echo "Script can only be run through CLI";
+}
 $thisFolder = dirname(__FILE__) . DIRECTORY_SEPARATOR;
 /* Create master json file */
 file_put_contents('index.json', json_encode(dirtree($thisFolder)));
@@ -10,7 +12,7 @@ foreach (dirtree($thisFolder) as $k => $dir) {
         $directory = dirtree($thisFolder . $k);
         file_put_contents($jsonFile, json_encode($directory));
     }
-    if ($k === 'reward') {
+    if ($k === 'reward' || $k === 'raid') {
         foreach ($dir as $ks => $subdir) {
             if (is_dir($thisFolder . $k . DIRECTORY_SEPARATOR . $ks)) {
                 $jsonFile = $thisFolder . $k . DIRECTORY_SEPARATOR . $ks . DIRECTORY_SEPARATOR . 'index.json';
@@ -25,8 +27,8 @@ function dirtree($dir, $ignoreEmpty=false) {
     if (!$dir instanceof DirectoryIterator) {
         $dir = new DirectoryIterator((string)$dir);
     }
-    $dirs  = array();
-    $files = array();
+    $dirs  = [];
+    $files = [];
     foreach ($dir as $node) {
         if ($node->isDir() && !$node->isDot()) {
             $tree = dirtree($node->getPathname(), $ignoreEmpty);
@@ -45,4 +47,3 @@ function dirtree($dir, $ignoreEmpty=false) {
 
     return array_merge($dirs, $files);
 }
-
