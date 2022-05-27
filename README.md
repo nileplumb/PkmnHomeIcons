@@ -1,10 +1,15 @@
 Pokémon Home style Icons for various Pokémon Go Map and Bot Projects
 
-NovaBot (Or other ID-FORM-COSTUME structure bots that accept repo url's)
+Most modern projects you will want to use a UICONS link such as 
 
-iconurl https://raw.githubusercontent.com/nileplumb/PkmnHomeIcons/master/RDM_OS_128/pokemon/
+128x128 Optimized, with outlines and shadows
+https://raw.githubusercontent.com/nileplumb/PkmnHomeIcons/master/UICONS_OS_128/index.json
+512x512 Outlined and Shadows
+https://raw.githubusercontent.com/nileplumb/PkmnHomeIcons/master/UICONS_OS/index.json
+512x512
+https://raw.githubusercontent.com/nileplumb/PkmnHomeIcons/master/UICONS/index.json
 
-RDM Download and replace your docker image folder with the RDM_OS_128 folder
+RDM now uses local hosted UICONS format, periodically git pull to your server and configure appropriately
 
 PMSF Outlined + Shadows (128x128) Optimized.
 
